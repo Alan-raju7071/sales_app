@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -13,13 +14,14 @@ class ApiService {
     }
   }
 
-  Future<List<dynamic>> getSales(Map<String, dynamic> payload) async {
-    // This should be updated if your /sales endpoint is real
-    final response = await http.post(
-      Uri.parse('$baseUrl/sales'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(payload),
-    );
-    return jsonDecode(response.body)['results'];
+  Future<List<dynamic>> getSales(String userID) async {
+    final users = await fetchUsers();
+    // Return a list with just the logged-in user's sale info
+    return users.where((u) => u['id'] == userID).toList();
+  }
+
+  Future<Map<String, dynamic>> getProfile(String userID) async {
+    final users = await fetchUsers();
+    return users.firstWhere((u) => u['id'] == userID);
   }
 }

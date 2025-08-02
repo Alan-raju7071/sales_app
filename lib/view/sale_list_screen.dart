@@ -31,9 +31,11 @@ class _SaleListScreenState extends State<SaleListScreen> {
       body: ListView.builder(
         itemCount: _sales.length,
         itemBuilder: (_, i) => SaleTile(
-          title: _sales[i]['title'] ?? '',
-          price: double.tryParse(_sales[i]['price'].toString()) ?? 0,
-        ),
+  title: _sales[i]['title'] ?? '',
+  price: double.tryParse(_sales[i]['price'].toString()) ?? 0,
+  image: _sales[i]['image'],
+),
+
       ),
     );
   }

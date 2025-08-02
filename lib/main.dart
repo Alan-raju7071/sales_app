@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginScreen(),
         '/dashboard': (context) => DashboardScreen(),
         '/sales': (context) => SaleListScreen(),
-       // '/profile': (context) => ProfileScreen(),
+        '/profile': (context) => ProfileScreen(),
         '/filters': (context) => FilterScreen(),
       },
     );
